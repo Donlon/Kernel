@@ -104,14 +104,14 @@
 
         user1 {
             label = "User1 Button";
-            gpios = <&gpio5 1 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio5 1 GPIO_ACTIVE_LOW>;
             gpio-key,wakeup;
             linux,code = <KEY_1>;
         };
         
         user2 {
             label = "User2 Button";
-            gpios = <&gpio4 14 GPIO_ACTIVE_HIGH>;
+            gpios = <&gpio4 14 GPIO_ACTIVE_LOW>;
             gpio-key,wakeup;
             linux,code = <KEY_2>;
         };
