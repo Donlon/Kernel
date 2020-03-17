@@ -307,7 +307,7 @@
                 /*touchscreen-key-map = <172>, <158>;*/ /*KEY_HOMEPAGE, KEY_BACK*/
 
                 goodix,type-a-report = <0>;
-                goodix,driver-send-cfg = <1>;
+                goodix,driver-send-cfg = <0>;
                 goodix,create-wr-node = <1>;
                 goodix,wakeup-with-reset = <0>;
                 goodix,resume-in-workqueue = <0>;
@@ -747,6 +747,7 @@
              &pinctrl_lcdif_reset>; 
     display = <&display0>;
     status = "okay";
+    reset-gpios = <&gpio3 4 GPIO_ACTIVE_LOW>; /* 100ask */
 
     display0: display {
         bits-per-pixel = <24>;
@@ -786,10 +787,9 @@
     status = "okay";
 };
 &ecspi3 { 
-    fsl,spi-num-chipselects = <1>;
     pinctrl-names = "default";
     pinctrl-0 = <&pinctrl_ecspi3>;
-    cs-gpio = <&gpio1 20 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&gpio1 20 GPIO_ACTIVE_LOW>;
     status = "okay";
     
     

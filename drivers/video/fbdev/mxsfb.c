@@ -62,6 +62,7 @@
 #include <video/of_display_timing.h>
 #include <video/videomode.h>
 #include <linux/uaccess.h>
+#include <linux/delay.h>
 
 #include "mxc/mxc_dispdrv.h"
 
@@ -2192,6 +2193,7 @@ static int mxsfb_probe(struct platform_device *pdev)
 	struct pinctrl *pinctrl;
 	int irq = platform_get_irq(pdev, 0);
 	int gpio, ret;
+	int rst_gpio;
 
 	if (of_id)
 		pdev->id_entry = of_id->data;
@@ -2335,6 +2337,22 @@ static int mxsfb_probe(struct platform_device *pdev)
 		goto fb_unregister;
 	}
 #endif
+        /* 100ask */
+        printk("100ask, %s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+        rst_gpio = of_get_named_gpio(pdev->dev.of_node, "reset-gpios", 0);
+        if (gpio_is_valid(rst_gpio)) {
+                ret = gpio_request(rst_gpio, "lcdif_rst");
+                if (ret < 0) {
+                        dev_err(&pdev->dev,
+                                "Failed to request GPIO:%d, ERRNO:%d\n",
+                                (s32)rst_gpio, ret);
+                } else {
+                        gpio_direction_output(rst_gpio, 0);
+                        msleep(2);
+                        gpio_direction_output(rst_gpio, 1);
+                        dev_info(&pdev->dev,  "Success seset LCDIF\n");
+                }
+        }
 
 	dev_info(&pdev->dev, "initialized\n");
 
