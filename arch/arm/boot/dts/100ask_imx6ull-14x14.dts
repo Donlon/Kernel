@@ -834,7 +834,7 @@
              &pinctrl_485_ctl>;
     //pinctrl-0 = <&pinctrl_uart3>;
     //fsl,rs485-gpio-txen = <&gpio5 0 GPIO_ACTIVE_HIGH>;
-    rts-gpio = <&gpio5 0 GPIO_ACTIVE_HIGH>;
+    //rts-gpio = <&gpio5 0 GPIO_ACTIVE_HIGH>;
     rs485-rts-active-high;
     //rs485-rts-active-high;
         rs485-rx-during-tx;
