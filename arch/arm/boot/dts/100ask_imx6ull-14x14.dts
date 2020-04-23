@@ -38,9 +38,9 @@
 
     backlight {
         compatible = "pwm-backlight";
-        pwms = <&pwm1 0 5000000>;
-        brightness-levels = <0 4 8 16 32 64 128 255>;
-        default-brightness-level = <7>;
+        pwms = <&pwm1 0 1000>;
+        brightness-levels = <0 1 2 3 4 5 6 8 10>;
+        default-brightness-level = <8>;
         status = "okay";
     };
 
