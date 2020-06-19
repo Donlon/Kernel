@@ -299,7 +299,7 @@
                 irq-gpios = <&gpio1 5 IRQ_TYPE_EDGE_FALLING>;
                 irq-flags = <2>;                /*1:rising 2: falling*/
 
-                touchscreen-max-id = <1>;
+                touchscreen-max-id = <5>;
                 touchscreen-size-x = <800>;
                 touchscreen-size-y = <480>;
                 touchscreen-max-w = <1024>;
